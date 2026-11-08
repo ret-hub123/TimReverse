@@ -1,0 +1,83 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<!-- Карусель -->
+<div id="heroCarousel" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel">
+    <!-- Индикаторы -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+
+    <!-- Слайды -->
+    <div class="carousel-inner">
+        <!-- Слайд 1 -->
+        <div class="carousel-item active">
+            <div class="hero-bg" style="background-image: url('{{ url_for('static', filename='img/slide1.jpg') }}');"></div>
+            <div class="container">
+                <div class="carousel-caption text-start">
+                    <h1 class="display-4 fw-bold mb-3">Реинжиниринг в действии</h1>
+                    <p class="lead mb-4">Студенческая научная студия «ТимРеверс» — это платформа для реализации идей и проектов в пищевой промышленности.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Слайд 2 -->
+        <div class="carousel-item">
+            <div class="hero-bg" style="background-image: url('{{ url_for('static', filename='img/slide2.jpg') }}');"></div>
+            <div class="container">
+                <div class="carousel-caption text-start">
+                    <h1 class="display-4 fw-bold mb-3">Современное оборудование</h1>
+                    <p class="lead mb-4">3D-сканирование, VR-моделирование, промышленная 3D-печать и мощные станции для расчетов — всё для ваших проектов.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Слайд 3 (с кнопкой) -->
+        <div class="carousel-item">
+            <div class="hero-bg" style="background-image: url('{{ url_for('static', filename='img/slide3.jpg') }}');"></div>
+            <div class="container">
+                <div class="carousel-caption text-start">
+                    <h1 class="display-4 fw-bold mb-3">От идеи до прототипа</h1>
+                    <p class="lead mb-4">Мы помогаем студентам и предприятиям АПК создавать улучшенные версии оборудования из отечественных материалов.</p>
+
+                    <a href="{{ url_for('requests.request_form') }}" class="btn btn-success btn-lg px-5 py-3 mt-4 rounded-pill shadow-lg fw-bold btn-hero">
+                        </i> Оставить заявку
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Стрелки -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+</div>
+
+<!-- Текст под каруселью -->
+<section class="py-5 bg-white" id="about">
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h2 class="fw-bold mb-4 text-success">Технологии будущего для АПК</h2>
+                <p class="fs-5 text-muted lh-lg mb-4">
+                    В условиях импортозамещения реверс-инжиниринг становится как никогда актуальным.
+                    Наша студия — это не просто лаборатория, а целая экосистема для роста.
+                    Мы интегрируем инновационные технологии в учебный процесс, помогая студентам
+                    воплощать в жизнь технологические стартапы и создавать собственные предприятия.
+                </p>
+                <div class="mt-5">
+                    <a href="{{ url_for('requests.request_form') }}" class="btn btn-outline-success btn-lg rounded-pill px-4">
+                        Обсудить сотрудничество <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

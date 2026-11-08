@@ -1,0 +1,243 @@
+/* --- Глобальные настройки --- */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+h1, h2, h3, h4, h5, h6, .brand-text, .footer-brand {
+    font-family: 'Montserrat', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- Навигация --- */
+.main-navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dee2e6;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #198754 !important;
+    text-decoration: none;
+}
+
+.brand-img {
+    height: 65px;
+    width: auto;
+}
+
+.brand-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.navbar-nav .nav-link {
+    color: #333 !important;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: #198754 !important;
+}
+
+.btn-request {
+    color: #ffffff;
+    border-radius: 50rem;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: all 0.3s ease;
+}
+
+.btn-request:hover {
+    background-color: #146c43;
+    transform: translateY(-2px);
+}
+
+/* --- Карусель --- */
+.hero-carousel {
+    position: relative;
+    height: 85vh;
+    min-height: 500px;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100%;
+    position: relative;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.1) 100%);
+}
+
+.carousel-caption {
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10%;
+    right: auto;
+    max-width: 700px;
+    text-align: left;
+    z-index: 10;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.carousel-caption h1 {
+    letter-spacing: -1px;
+}
+
+/* Анимация кнопки на карусели */
+.btn-hero {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    animation: pulse-green 2s infinite;
+}
+
+.btn-hero:hover {
+    background-color: #ffffff;
+    color: #198754;
+    border-color: #198754;
+    transform: scale(1.05);
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(25, 135, 84, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(25, 135, 84, 0); }
+}
+
+/* --- Футер --- */
+.main-footer {
+    background-color: #ffffff;
+    border-top: 1px solid #dee2e6;
+    padding: 1.5rem 0;
+    margin-top: auto;
+}
+
+.footer-logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+@media (min-width: 768px) {
+    .footer-logo-wrapper {
+        justify-content: flex-start;
+    }
+}
+
+.footer-img {
+    height: 35px;
+    width: auto;
+    margin: 0;
+}
+
+.footer-brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #198754;
+    line-height: 1;
+}
+
+/* --- Общие эффекты --- */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+::selection {
+    background-color: #198754;
+    color: #ffffff;
+}
+
+/* --- Адаптивность карусели --- */
+@media (max-width: 768px) {
+    .hero-carousel {
+        height: 70vh;
+    }
+    .carousel-caption {
+        left: 5%;
+        right: 5%;
+        text-align: center;
+    }
+    .carousel-caption h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- Обновленная интерактивная кнопка --- */
+.btn-tim-action {
+    /* Берем цвет из нашей палитры */
+    background-color: var(--tim-green, #2e7d32);
+    color: #ffffff;
+    border: 2px solid var(--tim-green, #2e7d32);
+
+    /* Делаем ее округлой */
+    border-radius: 50px;
+
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Плавная анимация */
+    box-shadow: 0 4px 6px rgba(46, 125, 50, 0.2); /* Мягкая тень в цвет кнопки */
+}
+
+/* При наведении */
+.btn-tim-action:hover {
+    background-color: var(--tim-dark-green, #1b5e20);
+    border-color: var(--tim-dark-green, #1b5e20);
+    color: #ffffff;
+    transform: translateY(-3px); /* Чуть выше поднимается */
+    box-shadow: 0 8px 15px rgba(46, 125, 50, 0.3); /* Тень становится больше */
+}
+
+/* При нажатии */
+.btn-tim-action:active {
+    background-color: #144a19 !important;
+    border-color: #144a19 !important;
+    transform: translateY(1px); /* Эффект вдавливания */
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.2);
+}
+
+/* При фокусе (для доступности) */
+.btn-tim-action:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.3); /* Мягкое свечение вокруг */
+}

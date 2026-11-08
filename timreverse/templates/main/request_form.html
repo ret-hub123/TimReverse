@@ -1,0 +1,54 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Оставить заявку | ТимРеверс{% endblock %}
+
+{% block content %}
+<div class="container my-5 flex-grow-1 pt-5">
+    <div class="row">
+    <div class="col-md-6 offset-md-3"> <!-- Центрируем, но без излишеств -->
+
+        <h3 class="mb-4">Оставить заявку</h3>
+
+        <div class="form-container">
+            <form method="POST" action="{{ url_for('requests.request_form') }}">
+                {{ form.hidden_tag() }}
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        {{ form.first_name.label(class="form-label") }}
+                        {{ form.first_name(class="form-control", placeholder="Иван") }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.second_name.label(class="form-label") }}
+                        {{ form.second_name(class="form-control", placeholder="Иванов") }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(class="form-control", placeholder="ivan@example.com") }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.phone.label(class="form-label") }}
+                    {{ form.phone(class="form-control", placeholder="+7 (999) 000-00-00") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.title.label(class="form-label fw-semibold") }}
+                    {{ form.title(class="form-control", placeholder="Например: Разработка 3D-модели шестерни") }}
+                </div>
+                <div class="mb-4">
+                    {{ form.description.label(class="form-label") }}
+                    {{ form.description(class="form-control", rows="5", placeholder="Опишите задачу...") }}
+                </div>
+
+               <div class="d-grid mt-4">
+                    {{ form.submit(class="btn btn-tim-action btn-lg") }}
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+    </div>
+{% endblock %}

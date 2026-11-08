@@ -1,0 +1,78 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Заявка #{{ request.id }} | ТимРеверс{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+
+
+    <div class="mb-4">
+        <a href="{{ url_for('dashboard.view_requests') }}" class="text-decoration-none text-muted">
+            <i class="bi bi-arrow-left"></i> Назад к списку заявок
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mb-4">
+            <div class="card border shadow-sm">
+                <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+                    <h4 class="mb-0">Заявка #{{ request.id }}</h4>
+                    <span class="text-muted small">
+                        <i class="bi bi-clock"></i>
+                        {{ request.created_at.strftime('%d.%m.%Y %H:%M') if request.created_at else 'Дата не указана' }}
+                    </span>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="text-muted mb-3">Тема заявки: </h5>
+                    <p class="fs-5 mb-4">{{ request.title }}</p>
+                    <hr>
+                    <h6 class="text-muted mb-3">Описание задачи:</h6>
+                    <p class="fs-5 mb-4">{{ request.description }}</p>
+                    <hr>
+
+                    <h6 class="text-muted mb-3">Управление статусом:</h6>
+                    <form action="{{ url_for('dashboard.update_status', request_id=request.id) }}" method="POST" class="d-flex gap-2">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+                        <select name="status" class="form-select w-auto">
+                            <option value="Новая" {% if request.status == 'Новая' %}selected{% endif %}>Новая</option>
+                            <option value="В работе" {% if request.status == 'В работе' %}selected{% endif %}>В работе</option>
+                            <option value="Завершена" {% if request.status == 'Завершена' %}selected{% endif %}>Завершена</option>
+                            <option value="Отклонена" {% if request.status == 'Отклонена' %}selected{% endif %}>Отклонена</option>
+                        </select>
+
+                        <button type="submit" class="btn btn-success">Применить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border shadow-sm">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0">Клиент</h5>
+                </div>
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">{{ request.client.first_name }} {{ request.client.second_name }}</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-3">
+                            <i class="bi bi-envelope me-2 text-muted"></i>
+                            <a href="mailto:{{ request.client.email }}">{{ request.client.email }}</a>
+                        </li>
+                        <li class="mb-3">
+                            <i class="bi bi-telephone me-2 text-muted"></i>
+                            {{ request.client.phone or 'Не указан' }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-light">
+                    <span class="text-muted small">ID клиента в базе: {{ request.client.id }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

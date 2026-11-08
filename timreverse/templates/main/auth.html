@@ -1,0 +1,56 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Вход для сотрудников | ТимРеверс{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 85vh;">
+    <div class="col-md-6 col-lg-5">
+
+        <!-- Карточка с четкой зеленой рамкой и белым фоном -->
+        <div class="card shadow-sm bg-white" style="border: 2px solid #198754; border-radius: 12px;">
+            <div class="card-body p-4 p-md-5">
+
+                <div class="text-center mb-4">
+
+                    <img src="{{ url_for('static', filename='img/logo-respons.svg') }}" alt="Logo" height="120" class="mb-3">
+                    <h4 class="fw-bold text-success mb-1">Вход для сотрудников</h4>
+                    <p class="text-muted small">Доступ только для персонала студии</p>
+                </div>
+
+
+
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+
+                    <div class="mb-3">
+                        {{ form.login.label(class="form-label fw-semibold small") }}
+
+                        {{ form.login(class="form-control", placeholder="admin", style="border: 1.5px solid #ced4da;") }}
+                    </div>
+
+                    <div class="mb-4">
+                        {{ form.password.label(class="form-label fw-semibold small") }}
+                        {{ form.password(class="form-control", placeholder="••••••••", style="border: 1.5px solid #ced4da;") }}
+                    </div>
+
+                    <div class="d-grid gap-2">
+
+                        {{ form.submit(class="btn btn-success btn-lg rounded-pill fw-bold") }}
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('main.main_page') }}" class="text-muted text-decoration-none small">
+                <i class="bi bi-arrow-left"></i> Вернуться на главную
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
